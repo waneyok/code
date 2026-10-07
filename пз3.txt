@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Задание 1: массив из заданных значений
+        int[] task1 = { 37, 0, 50, 46, 34, 46, 0, 13 };
+        Console.WriteLine("1) " + string.Join(" ", task1));
+
+        // Задание 2: ввод 10 элементов с клавиатуры
+        int[] task2 = new int[10];
+        Console.WriteLine("\n2) Введите 10 целых чисел:");
+
+        for (int i = 0; i < task2.Length; i++)
+        {
+            Console.Write($"Элемент {i + 1}: ");
+            task2[i] = int.Parse(Console.ReadLine()!);
+        }
+
+        Console.WriteLine("Массив: " + string.Join(" ", task2));
+
+        // Задание 3: числа от 1 до 12
+        int[] task3 = new int[12];
+        for (int i = 0; i < task3.Length; i++)
+            task3[i] = i + 1;
+
+        Console.WriteLine("\n3) " + string.Join(" ", task3));
+
+        // Задание 4: числа от 20 до 1
+        int[] task4 = new int[20];
+        for (int i = 0; i < task4.Length; i++)
+            task4[i] = 20 - i;
+
+        Console.WriteLine("4) " + string.Join(" ", task4));
+
+        // Задание 5а: убывающая последовательность из 8 элементов
+        int[] descending = new int[8];
+        for (int i = 0; i < descending.Length; i++)
+            descending[i] = 8 - i;
+
+        Console.WriteLine("5а) " + string.Join(" ", descending));
+
+        // Задание 5б: возрастающая последовательность из 8 элементов
+        int[] ascending = new int[8];
+        for (int i = 0; i < ascending.Length; i++)
+            ascending[i] = i + 1;
+
+        Console.WriteLine("5б) " + string.Join(" ", ascending));
+    }
+}
