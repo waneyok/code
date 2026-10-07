@@ -1,0 +1,129 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введите количество строк массива: ");
+        int rows = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Введите количество столбцов массива: ");
+        int columns = int.Parse(Console.ReadLine()!);
+
+        int[,] array = new int[rows, columns];
+
+        Console.WriteLine("\nВведите элементы массива:");
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                Console.Write($"Элемент [{i + 1}, {j + 1}]: ");
+                array[i, j] = int.Parse(Console.ReadLine()!);
+            }
+        }
+
+        Console.WriteLine("\nВведённый массив:");
+        PrintArray(array);
+
+        // Задание 1
+        Console.WriteLine("\n1а) Правый верхний угол: " + array[0, columns - 1]);
+        Console.WriteLine("1б) Левый нижний угол: " + array[rows - 1, 0]);
+
+        // Задание 2
+        Console.WriteLine("\n2а) Правый нижний угол: " + array[rows - 1, columns - 1]);
+        Console.WriteLine("2б) Левый верхний угол: " + array[0, 0]);
+
+        // Задание 3: произвольный элемент второй строки
+        if (rows >= 2)
+        {
+            Console.Write("\nВведите номер столбца для задания 3а (от 1 до " + columns + "): ");
+            int columnNumber = int.Parse(Console.ReadLine()!);
+            Console.WriteLine("3а) Элемент второй строки: " + array[1, columnNumber - 1]);
+        }
+        else
+        {
+            Console.WriteLine("\n3а) Невозможно выполнить: в массиве меньше двух строк.");
+        }
+
+        // Задание 3б: произвольный элемент массива
+        Console.Write("\nВведите номер строки для задания 3б: ");
+        int rowForAny = int.Parse(Console.ReadLine()!);
+        Console.Write("Введите номер столбца для задания 3б: ");
+        int columnForAny = int.Parse(Console.ReadLine()!);
+        Console.WriteLine("3б) Выбранный элемент: " + array[rowForAny - 1, columnForAny - 1]);
+
+        // Задание 4: произвольный элемент третьего столбца
+        if (columns >= 3)
+        {
+            Console.Write("\nВведите номер строки для задания 4а (от 1 до " + rows + "): ");
+            int rowNumber = int.Parse(Console.ReadLine()!);
+            Console.WriteLine("4а) Элемент третьего столбца: " + array[rowNumber - 1, 2]);
+        }
+        else
+        {
+            Console.WriteLine("\n4а) Невозможно выполнить: в массиве меньше трёх столбцов.");
+        }
+
+        // Задание 4б: произвольный элемент массива
+        Console.Write("\nВведите номер строки для задания 4б: ");
+        rowForAny = int.Parse(Console.ReadLine()!);
+        Console.Write("Введите номер столбца для задания 4б: ");
+        columnForAny = int.Parse(Console.ReadLine()!);
+        Console.WriteLine("4б) Выбранный элемент: " + array[rowForAny - 1, columnForAny - 1]);
+
+        // Задание 5а: все элементы пятой строки
+        if (rows >= 5)
+        {
+            Console.Write("\n5а) Элементы пятой строки: ");
+            for (int j = 0; j < columns; j++)
+                Console.Write(array[4, j] + " ");
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine("\n5а) Невозможно выполнить: в массиве меньше пяти строк.");
+        }
+
+        // Задание 5б: все элементы s-го столбца
+        Console.Write($"\nВведите номер столбца s для задания 5б (от 1 до {columns}): ");
+        int s = int.Parse(Console.ReadLine()!);
+
+        Console.WriteLine($"5б) Элементы столбца {s}:");
+        for (int i = 0; i < rows; i++)
+            Console.WriteLine(array[i, s - 1]);
+
+        // Задание 6а: все элементы второго столбца
+        if (columns >= 2)
+        {
+            Console.Write("\n6а) Элементы второго столбца: ");
+            for (int i = 0; i < rows; i++)
+                Console.Write(array[i, 1] + " ");
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine("\n6а) Невозможно выполнить: в массиве меньше двух столбцов.");
+        }
+
+        // Задание 6б: все элементы m-й строки
+        Console.Write($"\nВведите номер строки m для задания 6б (от 1 до {rows}): ");
+        int m = int.Parse(Console.ReadLine()!);
+
+        Console.WriteLine($"6б) Элементы строки {m}:");
+        for (int j = 0; j < columns; j++)
+            Console.Write(array[m - 1, j] + " ");
+        Console.WriteLine();
+    }
+
+    static void PrintArray(int[,] array)
+    {
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+                Console.Write(array[i, j] + "\t");
+
+            Console.WriteLine();
+        }
+    }
+}
